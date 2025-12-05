@@ -1,0 +1,822 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Village NIRD — Plateforme pédagogique</title>
+<link rel="stylesheet" href="script_anim.js">
+
+<style>
+:root{
+  --bg: #071026;
+  --accent: #00e6ff;
+}
+html,body{
+  margin:0;
+  font-family:Inter,Arial;
+  background:linear-gradient(180deg,#02040b,var(--bg));
+  color:#e6f7ff;
+}
+
+/* header */
+/*.header{
+  position:absolute; top:12px; left:12px; right:12px;
+  display:flex; align-items:center; gap:12px;
+}*/
+.header {
+  position: fixed;   /* reste collé en haut */
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;    /* ← important : le mettre plus grand que les autres éléments */
+  background: rgba(7,16,38,0.9); /* optionnel : fond semi-transparent pour voir le contenu en dessous */
+  padding: 10px 14px;
+  border-radius: 10px;
+  width: 29%;
+}
+
+
+.brand{
+  background:rgba(255,255,255,0.06);
+  padding:10px 14px; border-radius:10px;
+  font-weight:700; color:var(--accent);
+}
+
+/* main layout */
+.container{
+  margin-top:90px; padding:20px;
+  display:grid; grid-template-columns:1fr 380px; gap:20px;
+}
+@media(max-width:900px){
+  .container{ grid-template-columns:1fr; }
+}
+
+/* content blocks */
+.resource{
+  background:rgba(255,255,255,0.04);
+  padding:14px; border-radius:10px;
+  margin-bottom:14px;
+}
+.resource h3{ margin:0 0 6px; }
+.hint{ font-size:13px; opacity:.85; }
+
+/* sidebar */
+.sidebar{
+  background:rgba(255,255,255,0.04);
+  padding:14px; border-radius:10px;
+}
+.tip{
+  background:rgba(255,255,255,0.06);
+  padding:8px; border-radius:8px;
+  font-size:14px; margin-bottom:8px;
+}
+.scroll-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animation déclenchée par le scroll */
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-120px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* L'image animée */
+.scroll-img {
+    width: 240px;
+    animation: slideFromLeft 1s ease-out forwards;
+    animation-timeline: scrollAnim;
+    animation-range: entry 0% cover 40%;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <div class="brand">Village Numérique Résistant — Nuit de l'Info 2025</div>
+</div>
+
+<div class="container">
+  <div class="content">
+
+    <h2>Comment rendre un établissement scolaire plus résistant aux Big Tech</h2>
+
+    <div class="resource">
+      <h3>Systèmes d'exploitation propriétaires (Windows)</h3>
+      <p>Fin du support, mises à jour imposées, dépendance aux licences.</p>
+      <span class="hint">Astuce NIRD : Migrer progressivement vers GNU/Linux sur le matériel compatible.</span>
+      <div class="nird-info">
+    <h2>⚠️ Les limites des systèmes d’exploitation propriétaires comme Windows</h2>
+    <div class="scroll-zone">    <img class="scroll-img" src="img/systeme_exploitation.jfif" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+    <h3>🔹 Fin de support & risques de sécurité</h3>
+    <p>
+        Windows 10 a officiellement atteint sa fin de support le <strong>14 octobre 2025</strong>.
+        Après cette date, Microsoft ne fournit plus de correctifs de sécurité ni de mises à jour.
+    </p>
+    <ul>
+        <li>Vulnérabilités qui s’accumulent.</li>
+        <li>Risques accrus concernant les données.</li>
+        <li>Logiciels incompatibles.</li>
+        <li>Diminution de la conformité RGPD.</li>
+    </ul>
+
+    <h3>🔹 Mises à jour imposées, obsolescence forcée, coûts</h3>
+     <div class="scroll-zone">    <img class="scroll-img" src="img/limit_windows.png" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+    <p>
+        Windows nécessite du matériel récent → de nombreux PC deviennent artificiellement obsolètes.
+        Les licences et abonnements créent une dépendance financière continue.
+    </p>
+
+    <h2>🌱 Pourquoi migrer vers GNU/Linux</h2>
+   
+    <h3>✅ Indépendance & longévité du matériel</h3>
+     <div class="scroll-zone">    <img class="scroll-img" src="img/linux_vs_windows.png" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+    <p>
+        GNU/Linux fonctionne très bien sur du matériel ancien ou modeste.
+        Cela prolonge la durée de vie des postes de <strong>5 à 10 ans</strong>.
+    </p>
+
+    <h3>✅ Protection des données & souveraineté numérique</h3>
+    <p>
+        Pas de collecte non maîtrisée, pas de backdoor.  
+        Possibilité d’héberger des outils en interne → respect du RGPD.
+    </p>
+
+    <h3>✅ Valeurs pédagogiques du libre</h3>
+    <p>
+        Favorise la compréhension du numérique, l’esprit critique et l’autonomie.
+    </p>
+
+    <h2>📊 Données réelles (2025)</h2>
+         <div class="scroll-zone">    <img class="scroll-img" src="img/Poucentage.png" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+    <ul>
+        <li><strong>70 %</strong> des PC tournent sous Windows</li>
+        <li><strong>Linux : ~4 %</strong> mais en croissance</li>
+        <li>Windows 10 encore très utilisé malgré la fin de support</li>
+    </ul>
+</div>
+
+<style>
+.nird-info {
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 15px;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    border: 1px solid #334155;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease;
+}
+
+.nird-info h2 {
+    color: #38bdf8;
+    margin-top: 20px;
+}
+
+.nird-info h3 {
+    color: #7dd3fc;
+    margin-top: 15px;
+}
+
+.nird-info ul {
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.nird-info li {
+    padding: 5px 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .nird-info {
+        padding: 18px;
+        font-size: 14px;
+    }
+}
+</style>
+
+    </div>
+
+    <div class="resource">
+      <h3>Stockage hors-UE & Cloud propriétaire</h3>
+      <p>Données hébergées sous juridictions étrangères.</p>
+      <span class="hint">Astuce NIRD : Préférer des services européens ou auto-hébergés.</span>
+      <div class="nird-info">
+    <h2>🌍 Stockage hors-UE & Cloud propriétaire</h2>
+    <div class="scroll-zone">    <img class="scroll-img" src="img/Risking.jpg" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+
+    <p>
+        De nombreux services cloud hébergent leurs données hors de l'Union Européenne,
+        notamment aux États-Unis. Ces hébergements ne garantissent pas toujours les
+        protections prévues par le RGPD.
+    </p>
+
+    <p>
+        Cela signifie que les données scolaires — comptes élèves, documents, identifiants,
+        travaux, notes — peuvent être soumises à des lois étrangères telles que le
+        <strong>Cloud Act</strong>, qui autorise l’accès des autorités américaines même
+        lorsque les serveurs sont physiquement situés en Europe.
+    </p>
+
+    <div class="nird-tip">
+        <strong>💡 Astuce NIRD :</strong><br>
+        Préférer des services européens ou, mieux encore, des solutions auto-hébergées
+        dans l’établissement pour garantir la souveraineté numérique et la confidentialité
+        des données.
+    </div>
+</div>
+
+<style>
+/* 🔵 STYLE EXACTEMENT IDENTIQUE AU PREMIER BLOC */
+.nird-info {
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 15px;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    border: 1px solid #334155;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease both;
+}
+
+.nird-info h2 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.nird-info p {
+    margin-bottom: 15px;
+}
+
+.nird-tip {
+    background: rgba(56,189,248,0.1);
+    border-left: 4px solid #38bdf8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #bae6fd;
+    font-size: 1rem;
+}
+
+/* Animation utilisée dans ton premier bloc */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .nird-info {
+        padding: 18px;
+        font-size: 14px;
+    }
+}
+  /* Students */
+      .student {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+        border: 1px solid transparent;
+      }
+
+      .student:hover {
+        border: 1px solid var(--accent);
+        background: rgba(0, 230, 255, 0.08);
+      }
+
+      .student-name {
+        font-weight: 600;
+        color: #7dd3fc;
+      }
+
+      .competences {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        padding-left: 18px;
+        transition: max-height 0.4s ease, opacity 0.4s ease;
+      }
+
+      .student:hover .competences {
+        max-height: 200px;
+        opacity: 1;
+      }
+
+      .competences li {
+        font-size: 14px;
+        padding: 3px 0;
+        color: #e6f7ff;
+      }
+</style>
+
+    </div>
+
+    <div class="resource">
+      <h3>Écosystèmes fermés et coûteux</h3>
+      <p>Formats propriétaires, dépendance aux abonnements.</p>
+      <span class="hint">Astuce NIRD : Promouvoir les formats ouverts (ODF) & LibreOffice.</span>
+      <div class="nird-info">
+  <h2>🔒 Écosystèmes fermés et coûteux</h2>
+      <div class="scroll-zone">    <img class="scroll-img" src="img/Eco.png" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+
+  <p>
+    De nombreux logiciels et plateformes utilisent des formats propriétaires, ce qui 
+    oblige les établissements scolaires à rester dépendants d'abonnements et de licences 
+    souvent coûteuses.
+  </p>
+
+  <p>
+    Cela limite la flexibilité des enseignants et des élèves, complique l’échange 
+    de documents et rend la migration vers d’autres outils difficile.
+  </p>
+
+  <p>
+    Les formats fermés réduisent la portabilité des données et peuvent créer une 
+    dépendance à long terme vis-à-vis d’un fournisseur unique.
+  </p>
+
+  <div class="nird-tip">
+    <strong>💡 Astuce NIRD :</strong>  
+    Promouvoir les formats ouverts (ODF) et utiliser des solutions libres comme 
+    <strong>LibreOffice</strong> pour favoriser l’indépendance et réduire les coûts.
+  </div>
+</div>
+
+<style>
+.nird-info {
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 15px;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    border: 1px solid #334155;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease both;
+}
+
+.nird-info h2 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.nird-info p {
+    margin-bottom: 15px;
+}
+
+.nird-tip {
+    background: rgba(56,189,248,0.1);
+    border-left: 4px solid #38bdf8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #bae6fd;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .nird-info {
+        padding: 18px;
+        font-size: 14px;
+    }
+}
+</style>
+
+    </div>
+
+    <div class="resource">
+      <h3>Services centralisés</h3>
+      <p>Dépendance aux plateformes tierces.</p>
+      <span class="hint">Astuce NIRD : Favoriser les alternatives décentralisées.</span>
+      <div class="nird-info">
+  <h2>⚙️ Services centralisés</h2>
+        <div class="scroll-zone">    <img class="scroll-img" src="img/Platform_FERme.jpg" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+
+  <p>
+    Les services centralisés regroupent toutes les données et fonctionnalités sur 
+    une seule plateforme ou un seul fournisseur. Cela crée une forte dépendance 
+    aux tiers et limite le contrôle sur les informations de l'établissement.
+  </p>
+
+  <p>
+    En cas de panne, de modification des conditions d'utilisation ou de problème 
+    de sécurité, l'ensemble du fonctionnement scolaire peut être affecté.
+  </p>
+
+  <p>
+    De plus, la centralisation facilite la collecte massive de données, ce qui peut 
+    compromettre la confidentialité des élèves et du personnel.
+  </p>
+
+  <div class="nird-tip">
+    <strong>💡 Astuce NIRD :</strong>  
+    Favoriser les alternatives décentralisées, comme les plateformes auto-hébergées 
+    ou open-source, pour garder le contrôle et protéger les données.
+  </div>
+</div>
+
+<style>
+.nird-info {
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 15px;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    border: 1px solid #334155;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease both;
+}
+
+.nird-info h2 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.nird-info p {
+    margin-bottom: 15px;
+}
+
+.nird-tip {
+    background: rgba(56,189,248,0.1);
+    border-left: 4px solid #38bdf8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #bae6fd;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .nird-info {
+        padding: 18px;
+        font-size: 14px;
+    }
+}
+</style>
+
+    </div>
+
+    <div class="resource">
+      <h3>Obsolescence matérielle</h3>
+      <p>Renouvellement forcé malgré matériel fonctionnel.</p>
+      <span class="hint">Astuce NIRD : Politique d’achat durable & réemploi.</span>
+      <div class="nird-info">
+  <h2>💻 Obsolescence matérielle</h2>
+          <div class="scroll-zone">    <img class="scroll-img" src="img/Plitic.png" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+
+  <p>
+    L'obsolescence matérielle désigne le renouvellement forcé du matériel informatique, 
+    même lorsque celui-ci fonctionne encore correctement. Les établissements scolaires 
+    sont souvent poussés à remplacer ordinateurs, tablettes et serveurs pour rester 
+    compatibles avec certains logiciels propriétaires ou services cloud.
+  </p>
+
+  <p>
+    Cela engendre des coûts importants, augmente la production de déchets électroniques 
+    et peut nuire à l'environnement.
+  </p>
+
+  <p>
+    De plus, le matériel récent n'apporte pas toujours de réelles améliorations pour les 
+    usages pédagogiques, ce qui rend ce renouvellement souvent inutile.
+  </p>
+
+  <div class="nird-tip">
+    <strong>💡 Astuce NIRD :</strong>  
+    Mettre en place une politique d’achat durable, privilégier le réemploi et la maintenance 
+    du matériel existant pour prolonger sa durée de vie.
+  </div>
+</div>
+
+<style>
+.nird-info {
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 15px;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    border: 1px solid #334155;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease both;
+}
+
+.nird-info h2 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.nird-info p {
+    margin-bottom: 15px;
+}
+
+.nird-tip {
+    background: rgba(56,189,248,0.1);
+    border-left: 4px solid #38bdf8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #bae6fd;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .nird-info {
+        padding: 18px;
+        font-size: 14px;
+    }
+}
+</style>
+
+    </div>
+
+    <div class="resource">
+      <h3>Réseaux sociaux dominants</h3>
+      <p>Dépendance à la monétisation des données.</p>
+      <span class="hint">Astuce NIRD : Sensibiliser à Mastodon / Matrix.</span>
+    <div class="nird-info">
+  <h2>📱 Réseaux sociaux dominants</h2>
+     <div class="scroll-zone">    <img class="scroll-img" src="img/Social_Media.png" style=" display: block;margin: 0 auto; width: 400px" alt=""></div>
+
+  <p>
+    Les réseaux sociaux les plus utilisés dans les établissements scolaires sont souvent 
+    centralisés et gratuits, mais leur modèle économique repose sur la monétisation 
+    des données personnelles. Les informations des élèves — profils, interactions, 
+    préférences — peuvent être collectées et exploitées à des fins publicitaires.
+  </p>
+
+  <p>
+    Cette dépendance crée un risque pour la confidentialité et la souveraineté des données, 
+    tout en encourageant l’usage de plateformes tierces non contrôlées par l’établissement.
+  </p>
+
+  <div class="nird-tip">
+    <strong>💡 Astuce NIRD :</strong>  
+    Sensibiliser les élèves et le personnel à des alternatives décentralisées et libres, 
+    comme <strong>Mastodon</strong> pour les réseaux sociaux ou <strong>Matrix</strong> 
+    pour la messagerie sécurisée.
+  </div>
+</div>
+
+<style>
+.nird-info {
+    max-width: 850px;
+    margin: 20px auto;
+    padding: 25px;
+    background: #0f172a;
+    color: #e2e8f0;
+    border-radius: 15px;
+    font-family: "Segoe UI", sans-serif;
+    line-height: 1.6;
+    border: 1px solid #334155;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    animation: fadeIn 0.8s ease both;
+}
+
+.nird-info h2 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.nird-info p {
+    margin-bottom: 15px;
+}
+
+.nird-tip {
+    background: rgba(56,189,248,0.1);
+    border-left: 4px solid #38bdf8;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    color: #bae6fd;
+    font-size: 1rem;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+    .nird-info {
+        padding: 18px;
+        font-size: 14px;
+    }
+}
+</style>
+  
+    </div>
+
+  </div>
+
+  
+      <!-- ⭐ FULL SIDEBAR ADDED WITHOUT REMOVING ANYTHING ⭐ -->
+      <aside class="sidebar">
+        <h3 style="margin-top: 25px">Équipe Étudiante</h3>
+
+        <!-- FULL MEMBER LIST -->
+        <div class="student">
+          <div class="student-name">Ahmed Bouafif</div>
+          <ul class="competences">
+            <li>Développement</li>
+            <li>Scripts</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Zayd Jaballi</div>
+          <ul class="competences">
+            <li>Front-End</li>
+            <li>UI Design</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Ghassen Trabelsi</div>
+          <ul class="competences">
+            <li>Linux</li>
+            <li>Sécurité</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Fatma Il haj Ayach</div>
+          <ul class="competences">
+            <li>UI/UX</li>
+            <li>Storyboard</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Lina Zoukar</div>
+          <ul class="competences">
+            <li>Communication</li>
+            <li>Rédaction</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Wathah Aziz</div>
+          <ul class="competences">
+            <li>Back-end</li>
+            <li>Optimisation</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Azza Bouzir</div>
+          <ul class="competences">
+            <li>Organisation</li>
+            <li>Testing</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Mouhamed Abd Allah Goulli</div>
+          <ul class="competences">
+            <li>Déploiement</li>
+            <li>Serveurs</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Adem Harrabi</div>
+          <ul class="competences">
+            <li>Maquettage</li>
+            <li>Front-End</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Louay Bouzaabiya</div>
+          <ul class="competences">
+            <li>Réseaux</li>
+            <li>Monitoring</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Ahmed Mahmoudi</div>
+          <ul class="competences">
+            <li>Design</li>
+            <li>Outils graphiques</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Mariem Toumi</div>
+          <ul class="competences">
+            <li>Documentation</li>
+            <li>Analyse</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Roua Bin Razough</div>
+          <ul class="competences">
+            <li>Gestion</li>
+            <li>Coordination</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Liyes Saoudi</div>
+          <ul class="competences">
+            <li>Back-End</li>
+            <li>API</li>
+          </ul>
+        </div>
+        <div class="student">
+          <div class="student-name">Rayen Bouabidi</div>
+          <ul class="competences">
+            <li>DevOps</li>
+            <li>Linux</li>
+          </ul>
+        </div>
+
+         <div class="student">
+          <div class="student-name">Aya Dorbez</div>
+          <ul class="competences">
+         
+            <li>Responsable du groupe</li>
+          </ul>
+        </div>
+      </aside>
+</div>
+
+</body>
+</html>
